@@ -2,8 +2,13 @@
 
 docker stop gitlab; docker rm gitlab
 
+sudo rm -rf app/*
 sudo rm -rf data/*
 sudo rm -rf mysql/*
+
+mkdir -p app
+mkdir -p data
+mkdir -p mysql
 
 docker run --name='gitlab' -d  \
 -p 127.0.1.1:10022:22 \
@@ -16,10 +21,18 @@ docker run --name='gitlab' -d  \
 sameersbn/gitlab:7.0.0
 
 watch 'docker ps -a | grep gitlab ;docker logs gitlab | tail -20'
+#-v $PWD/app:/app \
+#-v $PWD/redis:/var/lib/redis \
 #-e "DB_PASS=gitlabpassword" \
 
-#docker run --name=gitlab -i -t --rm [OPTIONS] sameersbn/gitlab:7.0.0 app:rake gitlab:backup:create
 
+
+#    username: admin@local.host
+#    password: 5iveL!fe
+#    User: root Password: leiN2thi9dei
+
+
+#docker run --name=gitlab -i -t --rm [OPTIONS] sameersbn/gitlab:7.0.0 app:rake gitlab:backup:create
 
 
 #Creating backups
