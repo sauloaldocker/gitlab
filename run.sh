@@ -10,6 +10,13 @@
 #mkdir -p data
 #mkdir -p mysql
 
+docker stop gitlab
+docker rm gitlab
+
+SRC=$HOME/data/gitlab
+SRC_DATA=$SRC/data
+SRC_SQL=$SRC/mysql
+
 docker run --name='gitlab' -d  \
 -p 127.0.1.1:10022:22 \
 -p 127.0.1.1:10080:80 \
@@ -17,8 +24,8 @@ docker run --name='gitlab' -d  \
 -e "GITLAB_PORT=10080" \
 -e "GITLAB_SSH_PORT=10022" \
 -e "GITLAB_HTTPS=false" \
--v $PWD/data:/home/git/data \
--v $PWD/mysql:/var/lib/mysql \
+-v $SRC_DATA:/home/git/data \
+-v $SRC_SQL:/var/lib/mysql \
 sameersbn/gitlab:7.0.0
 
 watch 'docker ps -a | grep gitlab ;docker logs gitlab | tail -20'
