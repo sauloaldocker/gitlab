@@ -13,7 +13,7 @@
 docker stop gitlab
 docker rm gitlab
 
-SRC=$HOME/data/gitlab
+SRC=$HOME/data/docker/gitlab
 SRC_DATA=$SRC/data
 SRC_SQL=$SRC/mysql
 
