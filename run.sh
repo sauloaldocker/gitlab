@@ -25,6 +25,9 @@ docker run --name='gitlab' -d  \
 -e "GITLAB_PORT=10080" \
 -e "GITLAB_SSH_PORT=10022" \
 -e "GITLAB_HTTPS=false" \
+-e "GITLAB_PROJECTS_VISIBILITY=public" \
+-e "GITLAB_BACKUPS=daily" \
+-e "GITLAB_BACKUP_EXPIRY=604800" \
 -v $SRC_DATA:/home/git/data \
 -v $SRC_SQL:/var/lib/mysql \
 sameersbn/gitlab
