@@ -14,9 +14,7 @@ docker stop gitlab
 sleep 2
 docker rm gitlab
 
-SRC=$HOME/data/docker/gitlab
-SRC_DATA=$SRC/data
-SRC_SQL=$SRC/mysql
+source cfg
 
 docker run --name='gitlab' -d  \
 -p 127.0.1.1:10022:22 \
@@ -30,7 +28,7 @@ docker run --name='gitlab' -d  \
 -e "GITLAB_BACKUP_EXPIRY=604800" \
 -v $SRC_DATA:/home/git/data \
 -v $SRC_SQL:/var/lib/mysql \
-sameersbn/gitlab
+sameersbn/gitlab:$VERSION
 
 watch 'docker ps -a | grep gitlab ;docker logs gitlab | tail -20'
 

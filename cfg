@@ -1,0 +1,4 @@
+SRC=$HOME/data/docker/gitlab
+SRC_DATA=$SRC/data
+SRC_SQL=$SRC/mysql
+VERSION=7.2.1-1
