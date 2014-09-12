@@ -11,6 +11,7 @@
 #mkdir -p mysql
 
 docker stop gitlab
+sleep 2
 docker rm gitlab
 
 SRC=$HOME/data/docker/gitlab
@@ -26,7 +27,7 @@ docker run --name='gitlab' -d  \
 -e "GITLAB_HTTPS=false" \
 -v $SRC_DATA:/home/git/data \
 -v $SRC_SQL:/var/lib/mysql \
-sameersbn/gitlab:7.0.0
+sameersbn/gitlab
 
 watch 'docker ps -a | grep gitlab ;docker logs gitlab | tail -20'
 
